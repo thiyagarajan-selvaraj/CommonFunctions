@@ -1,0 +1,25 @@
+// Get the object schema 
+
+for(Schema.sObjectType objType : SChema.getGlboalDescribe().values()){
+	Syste.debug('Label is '+objType.getDescribe().getLabel()+' Name is '+objType.getDescribe().getName());
+}
+
+// Get the field schema 
+for(Schema.sObjectField objField : SChema.getGlboalDescribe().get()){
+	System.debug('Label is '+objType.getDescribe().getLabel()+' Name is '+objType.getDescribe().getName());
+}
+
+
+/*
+* @Description : Method used to get the list of fields for a given object
+* @Return Set<String> list of fields for a given sobject
+*/ 
+public static Map<String, String> selectAllFromSObject(String sObjectName){
+	Map<String, String> fieldNamesByLabelsMap = new Map<String, String>();
+
+	// Get the list of fields
+	for(Schema.sObjectField objField : Schema.getGlobalDescribe().get(sObjectName).getDescribe().fields.getMap().values()){
+		fieldNamesByLabelsMap.put(objField.getDescribe().getName(), objField.getDescribe().getLabel());
+	}
+	return fieldNamesByLabelsMap;
+}
